@@ -1,0 +1,71 @@
+/*
+	Análise Mundial da Desigualdade de Gêneros
+	by Katharine Amaral
+*/
+
+.mulher {
+	color: #EB4CA0; //ROSA	
+}
+
+.homem {
+	color: #6061A6; //AZUL	
+}
+
+.semDado {
+	color: #FBF495; //AMARELO	
+}
+
+.tooltip-inner {
+    max-width: 100% !important;
+}
+
+.textoAzulTitulo {
+	color: #6061A6; //AZUL
+	float: left;
+	display: inline;
+	width: 202px;
+	font-size: 2em; margin: .67em 0;
+}
+
+.textoRosaTitulo {
+	color: #EB4CA0; //ROSA
+	float: left;
+	display: inline;
+	width: 200px;
+	font-size: 2em; margin: .67em 0;
+}
+
+.textoAzulAutora {
+	color: #6061A6; //AZUL
+	float: left;
+	display: inline;
+	width: 202px;
+	font-size: 1.17em; margin: .83em 0;
+}
+
+.textoRosaAutora {
+	color: #EB4CA0; //ROSA
+	float: left;
+	display: inline;
+	width: 200px;
+	font-size: 1.17em; margin: .83em 0;
+}
+
+.textoItem {
+	margin-top: 6px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#abaAtiva {
+	color: #FBF495; //AMARELO ESCURO
+}
+
+#abaDesativa {
+	color: #FFFCE7; //AMARELO CLARO
+}
+
+#mapid {
+	height: 500px;
+    width: 100%;
+}
