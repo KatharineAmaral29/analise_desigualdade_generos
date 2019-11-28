@@ -17,31 +17,27 @@ $(document).ready(function() {
 	 	var mundoMap = L.map('mapid').setView([16.636192, 13.886719], 1.5).addLayer(osm);
 
 		// Lendo o arquivo com os dados
-		dadosMundiais = d3.csv("https://media.githubusercontent.com/media/KatharineAmaral29/datavis_trabalho_final/master/dados/gender_statistics.csv").then(function(data){
+		dadosMundiais = d3.csv("https://raw.githubusercontent.com/KatharineAmaral29/analise_desigualdade_generos/master/dados/gender_statistics.csv").then(function(data){
 			let mundoMap = d3.map()
-			let maioria;
 			data.forEach(function(d) {
-				maioria = "Nenhum"
-				console.log("Séries " + d["SeriesCode"] + "Ano " + d.Ano)
-				if(d.SeriesCode == "SP.POP.TOTL.FE.ZS" && d.Ano == "2018"){
-					if(d.Value >= 50){
+				if(d["Series Code"] == "SP.POP.TOTL.FE.ZS"){
+				console.log("Séries " + d["Series Code"] + "Ano 2018 " + d["2018"] + "País " + d["Country Name"])
+					if(d["2018"] >= 50){
 						d.maioria = "Feminino"
-					} else if(d.Value > 0 && d.Value < 50) {
+					} else if(d["2018"] > 0 && d["2018"] < 50) {
 						d.maioria = "Masculino"
 					} else {
 						d.maioria = "Nenhum"
 					}
-					mundoMap.set(d.CountryName,[+d.Ano, d.Valor, d.maioria])
+					mundoMap.set(d["Country Name"],[d["2018"], d.maioria])
 				}			
 			})
-			return mundoMap
-		})
-
+		})	
+		
 		colorScale = d3.scaleOrdinal()
           .domain(["Feminino", "Masculino", "Nenhum"])
           .range(["#EB4CA0", "#6061A6", "#FBF495"]);
 
-/*
 		function highlightFeature(e) {
 			let layer = e.target;
 			//console.log(e.target)
@@ -76,20 +72,23 @@ $(document).ready(function() {
 				click: zoomToFeature
 			});
 		}
-	
-		L.geoJson(dadosMundiais, {
-			style: style,
-			onEachFeature: onEachFeature
-		}).addTo(mundoMap)
-
-
+		
+		paises = d3.json("dados/world-topo.json")
+		
+		L.geoJson(paises, {
+				style: style,
+				onEachFeature: onEachFeature
+		}).addTo(mundoMap)		
+		
 		function style(feature) {
-		 			weight: 1,
-					opacity: 1,
-					color: 'white',
-					dashArray: '3',
-					fillOpacity: 0.6,
-					fillColor: red;//colorScale(homicidesByName.get(feature.properties.NOME)[1])
-		}	
-*/		
+			 return {
+						weight: 1,
+						opacity: 1,
+						color: 'white',
+						dashArray: '3',
+						fillOpacity: 0.6,
+						fillColor: colorScale(dadosMundiais.get(feature.properties.NOME)[1])
+					};
+		}
+	
 });
