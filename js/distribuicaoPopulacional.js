@@ -21,7 +21,6 @@ $(document).ready(function() {
 			let mundoMap = d3.map()
 			data.forEach(function(d) {
 				if(d["Series Code"] == "SP.POP.TOTL.FE.ZS"){
-				console.log("Séries " + d["Series Code"] + "Ano 2018 " + d["2018"] + "País " + d["Country Name"])
 					if(d["2018"] >= 50){
 						d.maioria = "Feminino"
 					} else if(d["2018"] > 0 && d["2018"] < 50) {
@@ -30,6 +29,7 @@ $(document).ready(function() {
 						d.maioria = "Nenhum"
 					}
 					mundoMap.set(d["Country Name"],[d["2018"], d.maioria])
+					//console.log("Séries " + d["Series Code"] + "Ano 2018 " + d["2018"] + "País " + d["Country Name"] + "Maioria " + d.maioria)
 				}			
 			})
 		})	
@@ -43,10 +43,10 @@ $(document).ready(function() {
 			//console.log(e.target)
 
 			layer.setStyle({
-				weight: 2,
-				color: '#AAA',
-				dashArray: '',
-				fillOpacity: 0.7
+						weight: 2,
+						color: '#AAA',
+						dashArray: '',
+						fillOpacity: 0.7
 			});
 
 			if (!L.Browser.ie && !L.Browser.opera) {
@@ -55,6 +55,8 @@ $(document).ready(function() {
 
 			info.update(layer.feature);
 		}
+		
+		var geoj;
 
 		function resetHighlight(e) {
 			geoj.resetStyle(e.target);
@@ -67,20 +69,34 @@ $(document).ready(function() {
 
 		function onEachFeature(feature, layer) {
 			layer.on({
-				mouseover: highlightFeature,
-				mouseout: resetHighlight,
-				click: zoomToFeature
-			});
+						mouseover: highlightFeature,
+						mouseout: resetHighlight,
+						click: zoomToFeature
+					});
 		}
 		
-		var myGeoJSONPath = 'dados/map.geojson';
+		paises = d3.json("https://raw.githubusercontent.com/AshKyd/geojson-regions/master/countries/110m/all.geojson")
 		
-		paises = d3.json("dados/world-topo.json")
-		
-		L.geoJson(paises, {
+		$.ajax({
+			type: "GET",
+			url: "https://raw.githubusercontent.com/AshKyd/geojson-regions/master/countries/110m/all.geojson",
+			dataType: 'json',
+			success: function (response) {
+				geojsonLayer = L.geoJson(response, {
 				style: style,
 				onEachFeature: onEachFeature
-		}).addTo(mundoMap)		
+		}).addTo(mundoMap);
+				mundoMap.fitBounds(geojsonLayer.getBounds());
+			}
+		});
+		
+		
+		/*
+		geoj = L.geoJson(paises, {
+				style: style,
+				onEachFeature: onEachFeature
+		}).addTo(mundoMap)			
+		*/	
 		
 		function style(feature) {
 			 return {
@@ -89,8 +105,7 @@ $(document).ready(function() {
 						color: 'white',
 						dashArray: '3',
 						fillOpacity: 0.6,
-						fillColor: colorScale(dadosMundiais.get(feature.properties.NOME)[1])
+						fillColor: "#EB4CA0" //colorScale(dadosMundiais.get(feature.properties.NOME)[1])
 					};
 		}
-	
 });
