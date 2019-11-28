@@ -73,6 +73,8 @@ $(document).ready(function() {
 			});
 		}
 		
+		var myGeoJSONPath = 'dados/map.geojson';
+		
 		paises = d3.json("dados/world-topo.json")
 		
 		L.geoJson(paises, {
