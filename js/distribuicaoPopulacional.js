@@ -135,7 +135,7 @@
 	
   // Início Time Slider
   var dataTime = d3.range(0, 59).map(function(d) {
-    return new Date(1960 + d, 10, 3);
+    return new Date(1960 + d, 1, 1);
   });
 
   var sliderTime = d3
@@ -146,7 +146,7 @@
     .width(1040)
     .tickFormat(d3.timeFormat('%Y'))
     .tickValues(dataTime)
-    .default(new Date(2018, 10, 3))
+    .default(new Date(2018, 1, 1))
     .on('onchange', val => {
 	  onChange(val);
       d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
