@@ -18,7 +18,7 @@
 				} else {
 					d.Maioria2018 = 'Nenhum'
 				}
-				mapa2018.set(d.id, +d.Maioria2018)
+				mapa2018.set(d.id, [+d.Maioria2018, d['2018']])
 				console.log('Dataset - País' + d['name'] + ' Maioria ' + d['Maioria2018'] + ' 2018 -> ' + d['2018'])
 			}
 		});
@@ -79,7 +79,7 @@
             coordinates = d3.mouse(this)
             const x = coordinates[0] + 280
             const y = coordinates[1] + 220
-            showTooltip(dataset['name_sort'], x, y)
+            showTooltip(dataset.get(d.id), x, y)
         })
         .on('mouseout', function (d) {
             d3.select(this)
@@ -102,7 +102,8 @@
 		.style("left", x + "px")
 		.style("top", y + "px")
 		.select("#taxa")
-		.text(dataset['Maioria2018']);
+		.text(dataset.get(county_id));
+		//dataset['Maioria2018']);
 	  
 		d3.select("#tooltip")
 		.select("#country_name")
