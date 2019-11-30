@@ -48,7 +48,7 @@
     var path = d3.geoPath(projection)
 
     var zoom = d3.zoom()
-        .scaleExtent([1 / 4, 9])
+        .scaleExtent([0.85, 12])
         .on('zoom', function () {
             mapSvg.attr('transform', d3.event.transform)
         });
