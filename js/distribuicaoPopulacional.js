@@ -95,7 +95,7 @@
 		  .attr("id","tooltip")
 		  .attr("class", "hidden")
 		  .append("p")
-		  .html("<b>País <u>X</u><span id='country_name'></b></span><br/><span id='taxa'> </span><u><b>Y</b></u>% da população total é mulher.")
+		  .html("<b>País <u>X</u><span id='country_name'></b></span><br/><span id='taxa'> </span><u><b>Y</b></u>% da população total é do sexo feminino.")
 
 	function showTooltip(county_id, x, y){
 		d3.select("#tooltip")
@@ -129,6 +129,9 @@
  
     dc.renderAll()
 	
+	function atualizaMapa(){
+		console.log('Função que atualiza o mapa')
+	}
 	
   // Início Time Slider
   var dataTime = d3.range(0, 59).map(function(d) {
@@ -145,6 +148,7 @@
     .tickValues(dataTime)
     .default(new Date(1998, 10, 3))
     .on('onchange', val => {
+	  onChange(val);
       d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
     });
 
@@ -159,6 +163,11 @@
   gTime.call(sliderTime);
 
   d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
+
+  function onChange(val){
+	  console.log('Novo valor: ' + (d3.timeFormat('%Y')(val)));
+	  atualizaMapa();
+  }
 
   //Fim Time Slider
 	
