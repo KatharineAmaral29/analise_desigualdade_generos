@@ -4,15 +4,25 @@
   <title>Análise Mundial da Desigualdade de Gêneros</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-  <link rel="stylesheet" type="text/css" href="https://unpkg.com/dc@3/dc.css" />
-  <script src="https://unpkg.com/d3@5/dist/d3.js"></script>
-  <script src="https://unpkg.com/crossfilter2@1.4/crossfilter.js"></script>
-  <script src="https://unpkg.com/dc@3/dc.js"></script>
-  <script src="https://rawgit.com/crossfilter/reductio/master/reductio.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/3.1.5/dc.min.css" />
+	<link rel="stylesheet" href="css/main.css" />
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src="https://d3js.org/d3-zoom.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter2/1.4.7/crossfilter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/3.1.5/dc.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+	<script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
   
+  
+  
+  
+
+  <script src="https://unpkg.com/crossfilter2@1.4/crossfilter.js"></script>
+  <script src="https://rawgit.com/crossfilter/reductio/master/reductio.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" data-auto-replace-svg="nest"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -61,7 +71,7 @@
 		  <h3>Distribuição Populacional</h3>
 			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Population, female (% of total population)</i> - <b>SP.POP.TOTL.FE.ZS</b>">
 				Houve variação na proporção de homens e mulheres nos países durante os anos de 1960 a 2018?</h5><br/>
-				<div id="mapid"></div>
+				<div id="map"></div>
 				<br/>
 		
 			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Rural population, female (% of total)</i> - <b>SP.RUR.TOTL.FE.ZS</b><br/>
@@ -71,8 +81,8 @@
 				Como está distribuída a população dos países?</h5>
 				<b>Gráfico bolinha população rural, homens e mulheres</b><br/>
 				<b>Gráfico bolinha população urbana, homens e mulheres</b>
-			
-
+				<div id="parliamentRural" class="parliament"></div>
+				<div id="parliamentUrbana" class="parliament"></div>
 		<!-- FIM DISTRIBUIÇÃO POPULACIONAL -->			
 		</div>
 		
@@ -225,6 +235,7 @@
 	  </div>
 	</div>  
   <!-- SCRIPTS PARA OS MEUS GRÁFICOS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.min.js"></script>
   <script src="js/distribuicaoPopulacional.js"></script>
   <script src="js/educacao.js"></script>
   <script src="js/financas.js"></script>
