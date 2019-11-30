@@ -2,24 +2,28 @@
 	Análise Mundial da Desigualdade de Gêneros
 	by Katharine Amaral
 */
-
-(async function () {
 	
+function atualizaMapa(){
+	console.log('Função que atualiza o mapa')
+}
+	
+(async function () {
 
     var i = 0;
-	var mapa2018 = d3.map()
+	var mapa2018 = d3.map();
+	var anoMapa = '2018';
     var dataset = await d3.csv('https://raw.githubusercontent.com/KatharineAmaral29/analise_desigualdade_generos/master/dados/gender_statistics.csv').then(function(data){		
 		data.forEach(function(d){
 			if(d['Series Code'] == 'SP.POP.TOTL.FE.ZS'){ //série correspondente a variável "Population, female (% of total population)" do dataset
-				if(d['2018'] >= 50){
-					d.Maioria2018 = 'Feminino'
-				} else if(d['2018'] > 0 && d['2018'] < 50) {
-					d.Maioria2018 = 'Masculino'
+				if(d[anoMapa] >= 50){
+					d.Maioria = 'Feminino'
+				} else if(d[anoMapa] > 0 && d[anoMapa] < 50) {
+					d.Maioria = 'Masculino'
 				} else {
-					d.Maioria2018 = 'Nenhum'
+					d.Maioria = 'Nenhum'
 				}
-				mapa2018.set(d.id, [+d.Maioria2018, d['2018']])
-				console.log('Dataset - País' + d['name'] + ' Maioria ' + d['Maioria2018'] + ' 2018 -> ' + d['2018'])
+				mapa2018.set(d.id, [+d.Maioria, d[anoMapa]])
+				console.log('Dataset - País' + d['name'] + ' Maioria 2018' + d['Maioria'] + ' 2018 -> ' + d['2018'] + ' 2017 -> ' + d['2017'])
 			}
 		});
 		return mapa2018
@@ -128,10 +132,6 @@
 	  	.call(colorScale); 
  
     dc.renderAll()
-	
-	function atualizaMapa(){
-		console.log('Função que atualiza o mapa')
-	}
 	
   // Início Time Slider
   var dataTime = d3.range(0, 59).map(function(d) {
