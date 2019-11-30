@@ -71,6 +71,17 @@
 	font-size: 16px;
 }
 
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: black !important;
+    background-color: #FBF495 !important;
+}
+
+.nav-pills a.nav-link {
+    color: black !important;
+    text-decoration: none !important;
+    background-color: #FFFCE7 !important;
+}
+
 #abaAtiva {
 	color: #FBF495; //AMARELO ESCURO
 }
@@ -80,7 +91,7 @@
 }
 
 #mapid {
-	height: 500px;
+	height: 410px;
     width: 100%;
 }
 
@@ -106,6 +117,25 @@
   fill: none;
   stroke: #eee;
   stroke-linejoin: round;
+}
+
+text{   
+    position:absolute;
+    bottom:0;
+    direction: rtl;
+    
+    white-space: nowrap;
+
+    display: block;
+    /*Firefox*/
+    -moz-transform: rotate(-45deg);
+    /*Safari*/
+    -webkit-transform: rotate(-45deg);
+    /*Opera*/
+    -o-transform: rotate(-45deg);
+    /*IE*/
+    writing-mode: tb-rl;
+    filter: flipv fliph;
 }
 
 #tooltip {
