@@ -4,35 +4,30 @@
 */
 
 (async function () {
-
-    var dataset = await d3.csv('https://raw.githubusercontent.com/KatharineAmaral29/analise_desigualdade_generos/master/dados/gender_statistics.csv', function(data){});
 	
-    var i = 0;
-	var datasetParaMapa;
-	//Criando a variável Maioria para ser plotada no gráfico
-    dataset.forEach(d => {
-		if(d['Series Code'] == 'SP.POP.TOTL.FE.ZS'){ //série correspondente a variável "Population, female (% of total population)" do dataset
-					if(d['2018'] >= 50){
-						d.Maioria = 'Feminino'
-					} else if(d['2018'] > 0 && d['2018'] < 50) {
-						d.Maioria = 'Masculino'
-					} else {
-						d.Maioria = 'Nenhum'
-					}
-					datasetParaMapa[i].set(d['name_sort'],d.Maioria)
-					i++
-		}
-    });
 
-	dataset.forEach(d => {
+    var i = 0;
+	var mapa2018 = d3.map()
+    var dataset = await d3.csv('https://raw.githubusercontent.com/KatharineAmaral29/analise_desigualdade_generos/master/dados/gender_statistics.csv').then(function(data){		
+		data.forEach(function(d){
 			if(d['Series Code'] == 'SP.POP.TOTL.FE.ZS'){ //série correspondente a variável "Population, female (% of total population)" do dataset
-			//console.log(d);
-		}
-	});
+				if(d['2018'] >= 50){
+					d.Maioria2018 = 'Feminino'
+				} else if(d['2018'] > 0 && d['2018'] < 50) {
+					d.Maioria2018 = 'Masculino'
+				} else {
+					d.Maioria2018 = 'Nenhum'
+				}
+				mapa2018.set(d.id, +d.Maioria2018)
+				console.log('Dataset - País' + d['name'] + ' Maioria ' + d['Maioria2018'] + ' 2018 -> ' + d['2018'])
+			}
+		});
+		return mapa2018
+	})
 	
 	var facts = crossfilter(dataset);
     var all = facts.groupAll();
-    var countryDim = facts.dimension(d => d['name_sort'])
+    var countryDim = facts.dimension(d => d['name'])
     var countryGroup = countryDim.group();
 
 	/*var factsParaMapa = crossfilter(datasetParaMapa);
@@ -40,7 +35,7 @@
     var countryDimParaMapa = factsParaMapa.dimension(d => d['name_sort'])
     var countryGroupParaMapa = countryDimParaMapa.group();
 */
-    let world = await d3.json('https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json');
+    var world = await d3.json('https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json');
     var width = '100%'
     var height = 600
     var projection = d3.geoMercator()
@@ -72,7 +67,7 @@
     mapSvg.select('#layer').selectAll("path")
         .data(features)
         .enter().append("path")
-		.attr('fill', d => colorScale(dataset.Maioria))
+		.attr('fill', d => colorScale(dataset.get(d.id)))
 		.attr('d', path)
         .on('mouseover', function (d) {
             d3.select(this)
@@ -107,11 +102,11 @@
 		.style("left", x + "px")
 		.style("top", y + "px")
 		.select("#taxa")
-		.text(dataset['Maioria']);
+		.text(dataset['Maioria2018']);
 	  
 		d3.select("#tooltip")
 		.select("#country_name")
-		.text(dataset['name_sort']);
+		.text(dataset['name']);
 	  
 		d3.select("#tooltip")
 		.classed("hidden", false)
