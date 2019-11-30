@@ -10,7 +10,7 @@ function atualizaMapa(){
 (async function () {
 
     var i = 0;
-	var mapa2018 = d3.map();
+	var mapa = d3.map();
 	var anoMapa = '2018';
     var dataset = await d3.csv('https://raw.githubusercontent.com/KatharineAmaral29/analise_desigualdade_generos/master/dados/gender_statistics.csv').then(function(data){		
 		data.forEach(function(d){
@@ -22,11 +22,11 @@ function atualizaMapa(){
 				} else {
 					d.Maioria = 'Nenhum'
 				}
-				mapa2018.set(d.id, [+d.Maioria, d[anoMapa]])
+				mapa.set(d.id, [+d.Maioria, d[anoMapa]])
 				console.log('Dataset - País' + d['name'] + ' Maioria 2018' + d['Maioria'] + ' 2018 -> ' + d['2018'] + ' 2017 -> ' + d['2017'])
 			}
 		});
-		return mapa2018
+		return mapa;
 	})
 	
 	var facts = crossfilter(dataset);
