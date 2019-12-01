@@ -153,7 +153,7 @@ function gerarGraficosDistribuicaoPopulacional(){
     .default(new Date(2018, 1, 1))
     .on('onchange', val => {
 	  onChange(val);
-      d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+      //d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
     });
 
   var gTime = d3
