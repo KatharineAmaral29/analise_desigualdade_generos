@@ -119,7 +119,8 @@
   stroke-linejoin: round;
 }
 
-text{   
+
+#slider-time text{   
     position:absolute;
     bottom:0;
     direction: rtl;
@@ -169,8 +170,9 @@ body {
 }
 
 .campo {
-  display:block;
-  float:left;
+  display: inline-block !important;
+  //float: left;
+  //display: inline;
 }
 
 /* Início do para funcionar o select com as bandeirinhas */
@@ -236,13 +238,9 @@ body {
 /* Fim do para funcionar o select com as bandeirinhas */
 
 /* Inicio bonecao */
-/*
-tspan {
-	opacity: 0 !important;
-}*/
 
-#chartWoman g title {
-	opacity: 0 !important;
+tspan {
+	color: red !important;
 }
 
 #chartdiv {
@@ -252,12 +250,12 @@ tspan {
 
 #chartMan {
   width: 80% !important;
-  height: 350px !important;
+  height: 400px !important;
 }
 
 #chartWoman {
   width: 80% !important;
-  height: 350px !important;
+  height: 400px !important;
 }
 
 /* Fim bonecao*/
