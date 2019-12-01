@@ -3,8 +3,6 @@
 	by Katharine Amaral
 */
 
-$(document).ready(function() {
-	
-
-
-});
+function gerarGraficosSaude(){
+	console.log('Gerou graficos saude')
+}

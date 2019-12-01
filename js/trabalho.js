@@ -3,8 +3,6 @@
 	by Katharine Amaral
 */
 
-$(document).ready(function() {
-	
-
-
-});
+function gerarGraficosTrabalho(){
+	console.log('Gerou graficos trabalho')
+}

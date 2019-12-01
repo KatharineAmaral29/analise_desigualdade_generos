@@ -3,8 +3,6 @@
 	by Katharine Amaral
 */
 
-$(document).ready(function() {
-	
-
-
-});
+function gerarGraficosFinancas(){
+	console.log('Gerou graficos finanças')
+}
