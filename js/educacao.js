@@ -15,30 +15,45 @@
 					chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
 
 					chart.data = [{
-						"name": "The first",
-						"value": 354
+						"name": "Bachelor",
+						"value": "10%"
 					}, {
-						"name": "The second",
-						"value": 245
+						"name": "Lower Secondary",
+						"value": "20%"
 					}, {
-						"name": "The third",
-						"value": 187
+						"name": "Post-Secondary",
+						"value": "30%"
+					}, {
+						"name": "Primary",
+						"value": "10%"
+					}, {
+						"name": "Tertiary",
+						"value": "5%"
+					}, {
+						"name": "Upper Secondary",
+						"value": "5%"
+					}, {
+						"name": "Master",
+						"value": "10%"
+					}, {
+						"name": "Doctoral",
+						"value": "10%"
 					}];
 
 					var series = chart.series.push(new am4charts.PictorialStackedSeries());
 					series.dataFields.value = "value";
 					series.dataFields.category = "name";
 					//series.alignLabels = true;
-
+					
 					series.maskSprite.path = iconPath;
-					//series.ticks.template.locationX = 0;
-					//series.ticks.template.locationY = 0.5;
+					series.ticks.template.locationX = 0;
+					series.ticks.template.locationY = 0.5;
 
 					//series.labelsContainer.width = 400;
 
 					chart.legend = new am4charts.Legend();
 					chart.legend.position = "left";
-					chart.legend.valign = "bottom";         
+					chart.legend.valign = "bottom";       
 				} catch( e ) {
 				  console.log( e );
 				}
@@ -55,30 +70,45 @@
 					chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
 
 					chart.data = [{
-						"name": "The first",
-						"value": 354
+						"name": "Bachelor",
+						"value": "10%"
 					}, {
-						"name": "The second",
-						"value": 245
+						"name": "Lower Secondary",
+						"value": "20%"
 					}, {
-						"name": "The third",
-						"value": 187
+						"name": "Post-Secondary",
+						"value": "30%"
+					}, {
+						"name": "Primary",
+						"value": "10%"
+					}, {
+						"name": "Tertiary",
+						"value": "5%"
+					}, {
+						"name": "Upper Secondary",
+						"value": "5%"
+					}, {
+						"name": "Master",
+						"value": "10%"
+					}, {
+						"name": "Doctoral",
+						"value": "10%"
 					}];
 
 					var series = chart.series.push(new am4charts.PictorialStackedSeries());
 					series.dataFields.value = "value";
 					series.dataFields.category = "name";
 					//series.alignLabels = true;
-
+					
 					series.maskSprite.path = iconPath;
-					//series.ticks.template.locationX = 0;
-					//series.ticks.template.locationY = 0.5;
+					series.ticks.template.locationX = 0;
+					series.ticks.template.locationY = 0.5;
 
 					//series.labelsContainer.width = 400;
 
 					chart.legend = new am4charts.Legend();
 					chart.legend.position = "left";
-					chart.legend.valign = "bottom";         
+					chart.legend.valign = "bottom";
 				} catch( e ) {
 				  console.log( e );
 				}				
