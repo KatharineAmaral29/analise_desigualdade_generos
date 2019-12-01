@@ -7,6 +7,10 @@ function atualizaMapa(){
 	console.log('Função que atualiza o mapa')
 }
 
+function gerarGraficosDistribuicaoPopulacional(){
+	console.log('Gerou graficos distribuição populacional')
+}
+
 (async function () {
 	
     var i = 0;
@@ -170,5 +174,7 @@ function atualizaMapa(){
   }
 
   //Fim Time Slider
+	
+
 	
 })();
