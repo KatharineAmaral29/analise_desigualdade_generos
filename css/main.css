@@ -164,6 +164,15 @@ text{
   line-height: 20px;
 }
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.campo {
+  display:block;
+  float:left;
+}
+
 /* Início do para funcionar o select com as bandeirinhas */
 .dropdown-toggle.btn-default {
   color: #292b2c;
@@ -225,3 +234,30 @@ text{
 }
 
 /* Fim do para funcionar o select com as bandeirinhas */
+
+/* Inicio bonecao */
+/*
+tspan {
+	opacity: 0 !important;
+}*/
+
+#chartWoman g title {
+	opacity: 0 !important;
+}
+
+#chartdiv {
+  width: 80% !important;
+  height: 500px !important;
+}
+
+#chartMan {
+  width: 80% !important;
+  height: 350px !important;
+}
+
+#chartWoman {
+  width: 80% !important;
+  height: 350px !important;
+}
+
+/* Fim bonecao*/
