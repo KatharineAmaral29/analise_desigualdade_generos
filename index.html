@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/main.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/3.1.5/dc.min.css" /> -->
     <script src="https://d3js.org/d3.v5.js"></script>
     <!-- <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script> -->
@@ -21,13 +22,9 @@
 	<script src="js/main.js"></script>
 
 	<link rel="stylesheet" href="//unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="//unpkg.com/bootstrap-select@1.12.4/dist/css/bootstrap-select.min.css" type="text/css" />
-    <link rel="stylesheet" href="//unpkg.com/bootstrap-select-country@4.0.0/dist/css/bootstrap-select-country.min.css" type="text/css" />
- 
     <script src="//unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script> 
 	<script src="//unpkg.com/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script> 
-	<script src="//unpkg.com/bootstrap-select@1.12.4/dist/js/bootstrap-select.min.js"></script> 
-	<script src="//unpkg.com/bootstrap-select-country@4.0.0/dist/js/bootstrap-select-country.min.js"></script>
+	<script src="js/countrypicker.js"></script>
 	
 	<!-- SCRIPTS PARA OS MEUS GRÁFICOS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.min.js"></script>
@@ -89,7 +86,7 @@
 				<div id="map"></div>
 				<div class="row align-items-center">
 					<div class="col-sm"><div id="slider-time"></div></div><br>
-					<div class="col-sm-2">Selecionado: <p id="value-time"></p></div>
+					<!-- <div class="col-sm-2">Selecionado: <p id="value-time"></p></div> -->
 				</div>
 				<br>
 		
@@ -100,31 +97,83 @@
 				<b>Como está distribuída a população dos países?</b></h5>
 
 				<div class="campo">
-					<select class="selectpicker countrypicker" data-flag="true" required></select>
-					<select id="selectElementId" class="selectpicker" required></select>
+					<select id="paisDistribuicaoPopulacional" class="form-control">
+						  <option>Brazil</option>
+					</select>
+				</div>
+				<div class="campo">				
+					<select id="anoDistribuicaoPopulacional" class="form-control">
+						  <option>1960</option>
+						  <option>1961</option>
+						  <option>1962</option>
+						  <option>1963</option>
+						  <option>1964</option>
+						  <option>1965</option>
+						  <option>1966</option>
+						  <option>1967</option>
+						  <option>1968</option>
+						  <option>1969</option>
+						  <option>1970</option>
+						  <option>1971</option>
+						  <option>1972</option>
+						  <option>1973</option>
+						  <option>1974</option>
+						  <option>1975</option>
+						  <option>1976</option>
+						  <option>1977</option>
+						  <option>1978</option>
+						  <option>1979</option>
+						  <option>1980</option>
+						  <option>1981</option>
+						  <option>1982</option>
+						  <option>1983</option>
+						  <option>1984</option>
+						  <option>1985</option>
+						  <option>1986</option>
+						  <option>1987</option>
+						  <option>1988</option>
+						  <option>1989</option>
+						  <option>1990</option>
+						  <option>1991</option>
+						  <option>1992</option>
+						  <option>1993</option>
+						  <option>1994</option>
+						  <option>1995</option>
+						  <option>1996</option>
+						  <option>1997</option>
+						  <option>1998</option>
+						  <option>1999</option>
+						  <option>2000</option>
+						  <option>2001</option>
+						  <option>2002</option>
+						  <option>2003</option>
+						  <option>2004</option>
+						  <option>2005</option>
+						  <option>2006</option>
+						  <option>2007</option>
+						  <option>2008</option>
+						  <option>2009</option>
+						  <option>2010</option>
+						  <option>2011</option>
+						  <option>2012</option>
+						  <option>2013</option>
+						  <option>2014</option>
+						  <option>2015</option>
+						  <option>2016</option>
+						  <option>2017</option>
+						  <option>2018</option>						  
+					</select>
+				</div>
+				<div class="campo">				
 					<button id="buttonDistribuicaoPopulacional" onclick="gerarGraficosDistribuicaoPopulacional" type="button" class="btn btn-primary">Gerar!</button>
 				</div>
-
-				<script>
-					var min = 1960,
-						max = 2018,
-						select = document.getElementById('selectElementId');
-
-					for (var i = min; i<=max; i++){
-						var opt = document.createElement('option');
-						opt.value = i;
-						opt.text = i;
-						select.appendChild(opt);
-					}
-				</script>
 				
 				<br><br><br>
 				
 				<div class="row">
-					<!-- <div class="col"> -->
+					<div class="col">
 						<b>Gráfico bolinha população rural, homens e mulheres</b><br>
-						<div id="containerChart" style="max-width: 420px; min-width: 360px; margin: 1em auto;></div>
-					<!-- </div> -->
+					</div>
 					<div class="col">
 						<b>Gráfico bolinha população urbana, homens e mulheres</b><br><br>
 					</div>
@@ -175,16 +224,13 @@
 																					<i>Educational attainment, at least Master's or equivalent, population 25+, female (%) (cumulative)</i><br>
 																					<i>Educational attainment, at least Master's or equivalent, population 25+, male (%) (cumulative)</i><br>
 																					<i>Educational attainment, Doctoral or equivalent, population 25+, female (%) (cumulative)</i><br>
-																					<i>Educational attainment, Doctoral or equivalent, population 25+, male (%) (cumulative)</i><br>
-																					<i>Children out of school, primary, female</i><br>
-																					<i>Children out of school, primary, male</i><br>
-																					<i>Literacy rate, adult female (% of females ages 15 and above)</i><br>
-																					<i>Literacy rate, adult male (% of males ages 15 and above)</i><br>
-																					<i>Literacy rate, youth female (% of females ages 15-24)</i><br>
-																					<i>Literacy rate, youth male (% of males ages 15-24)</i><br>
-																					<i>Youth illiterate population, 15-24 years, % female</i><br>
-																					<i>Youth illiterate population, 15-24 years, female (number)</i><br>">			
+																					<i>Educational attainment, Doctoral or equivalent, population 25+, male (%) (cumulative)</i><br>">			
 				<b>Qual o nível de escolaridade feminino e masculino nos países?</b></h5><br>
+				
+				<div style="text-align: center;">
+					<h5><b>Nível educacional feminino e masculino da população com mais de 25 anos. (dados cumulativos)</b></h5>
+				</div>
+				
 				<div class="row">
 					<div class="col">
 						<div id="chartWoman"></div>
@@ -310,8 +356,6 @@
 	  </div>
 	</div>
 	 <script src="js/educacao.js"></script>
-	 <script>
-		$('.countrypicker').countrypicker();
-	 </script> 
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 </body>
 </html>
