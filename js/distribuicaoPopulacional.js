@@ -2,16 +2,17 @@
 	Análise Mundial da Desigualdade de Gêneros
 	by Katharine Amaral
 */
-	
+
 function atualizaMapa(){
 	console.log('Função que atualiza o mapa')
 }
-	
-(async function () {
 
+(async function () {
+	
     var i = 0;
 	var mapa = d3.map();
-	var anoMapa = '2018';
+	var anoMapa = '2018';	
+	
     var dataset = await d3.csv('https://raw.githubusercontent.com/KatharineAmaral29/analise_desigualdade_generos/master/dados/gender_statistics.csv').then(function(data){		
 		data.forEach(function(d){
 			if(d['Series Code'] == 'SP.POP.TOTL.FE.ZS'){ //série correspondente a variável "Population, female (% of total population)" do dataset
@@ -23,22 +24,21 @@ function atualizaMapa(){
 					d.Maioria = 'Nenhum'
 				}
 				mapa.set(d.id, [+d.Maioria, d[anoMapa]])
-				console.log('Dataset - País' + d['name'] + ' Maioria 2018' + d['Maioria'] + ' 2018 -> ' + d['2018'] + ' 2017 -> ' + d['2017'])
 			}
+			//console.log('Series: ' + d['Series Code'] + ' País: ' + d['name'] + ' 2018 -> ' + d['2018'] + ' 2017 -> ' + d['2017'])
 		});
 		return mapa;
 	})
+	
+	for(i = 0; i<dataset.size; i++){
+		console.log('Series: ' + dataset[i]['Series Code'] + ' País: ' + dataset[i]['name'] + ' 2018 -> ' + dataset[i]['2018'] + ' 2017 -> ' + dataset[i]['2017'])
+	}
 	
 	var facts = crossfilter(dataset);
     var all = facts.groupAll();
     var countryDim = facts.dimension(d => d['name'])
     var countryGroup = countryDim.group();
 
-	/*var factsParaMapa = crossfilter(datasetParaMapa);
-    var allParaMapa = factsParaMapa.groupAll();
-    var countryDimParaMapa = factsParaMapa.dimension(d => d['name_sort'])
-    var countryGroupParaMapa = countryDimParaMapa.group();
-*/
     var world = await d3.json('https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json');
     var width = '100%'
     var height = 600
