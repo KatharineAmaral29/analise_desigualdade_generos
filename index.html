@@ -19,7 +19,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/d3-simple-slider"></script>
 	<script src="js/main.js"></script>
-	
+
 	<link rel="stylesheet" href="//unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="//unpkg.com/bootstrap-select@1.12.4/dist/css/bootstrap-select.min.css" type="text/css" />
     <link rel="stylesheet" href="//unpkg.com/bootstrap-select-country@4.0.0/dist/css/bootstrap-select-country.min.css" type="text/css" />
@@ -32,14 +32,20 @@
 	<!-- SCRIPTS PARA OS MEUS GRÁFICOS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.min.js"></script>
     <script src="js/distribuicaoPopulacional.js"></script>
-    <script src="js/educacao.js"></script>
     <script src="js/financas.js"></script>
     <script src="js/saude.js"></script>
     <script src="js/trabalho.js"></script>	
+	
+	<!-- Resources Bonecao-->
+	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
 </head>
 
 <body onload="atualizaMapa()">
-<br/>
+<br>
 
 	<div class="container">
 		<div style="text-align: center;">
@@ -52,24 +58,24 @@
 			<div class="textoRosaAutora"><b>Katharine Amaral</b></div>
 		</div>
 
-		<br/>
+		<br>
 		
 	  <!-- Seções -->
 	  <ul class="nav nav-pills nav-justified" role="tablist">
 		<li class="nav-item">
-		  <a class="nav-link active" data-toggle="pill" href="#distribuicaoPopulacional"><i class="fas fa-users fa-2x"></i><br/><div class="textoItem">Distribuição Popul.</div></a>
+		  <a class="nav-link active" data-toggle="pill" href="#distribuicaoPopulacional"><i class="fas fa-users fa-2x"></i><br><div class="textoItem">Distribuição Popul.</div></a>
 		</li>
 		<li class="nav-item">
-		  <a class="nav-link" data-toggle="pill" href="#educacao"><i class="fas fa-graduation-cap fa-2x"></i><br/><div class="textoItem">Educação</div></a>
+		  <a class="nav-link" data-toggle="pill" href="#educacao"><i class="fas fa-graduation-cap fa-2x"></i><br><div class="textoItem">Educação</div></a>
 		</li>
 		<li class="nav-item">
-		  <a class="nav-link" data-toggle="pill" href="#financas"><i class="fas fa-coins fa-2x"></i><br/><div class="textoItem">Finanças</div></a>
+		  <a class="nav-link" data-toggle="pill" href="#financas"><i class="fas fa-coins fa-2x"></i><br><div class="textoItem">Finanças</div></a>
 		</li>
 		<li class="nav-item">
-		  <a class="nav-link" data-toggle="pill" href="#saude"><i class="fas fa-heartbeat fa-2x"></i><br/><div class="textoItem">Saúde</div></a>
+		  <a class="nav-link" data-toggle="pill" href="#saude"><i class="fas fa-heartbeat fa-2x"></i><br><div class="textoItem">Saúde</div></a>
 		</li>
 		<li class="nav-item">
-		  <a class="nav-link" data-toggle="pill" href="#trabalho"><i class="fas fa-briefcase fa-2x"></i><br/><div class="textoItem">Trabalho</div></a>
+		  <a class="nav-link" data-toggle="pill" href="#trabalho"><i class="fas fa-briefcase fa-2x"></i><br><div class="textoItem">Trabalho</div></a>
 		</li>
 	  </ul>
 
@@ -77,47 +83,73 @@
 	  <div class="tab-content">
 		<!-- INÍCIO DISTRIBUIÇÃO POPULACIONAL -->
 		<div id="distribuicaoPopulacional" class="container tab-pane active"><br>
-		  <h3>Distribuição Populacional</h3>
+		  <h3><b>Distribuição Populacional</b></h3>
 			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Population, female (% of total population)</i> - <b>SP.POP.TOTL.FE.ZS</b>">
-				Houve variação na proporção de homens e mulheres nos países durante os anos de 1960 a 2018?</h5><br/>
+				<b>Houve variação na proporção de homens e mulheres nos países durante os anos de 1960 a 2018?</b></h5><br>
 				<div id="map"></div>
 				<div class="row align-items-center">
-					<div class="col-sm"><div id="slider-time"></div></div><br/>
+					<div class="col-sm"><div id="slider-time"></div></div><br>
 					<div class="col-sm-2">Selecionado: <p id="value-time"></p></div>
 				</div>
-				<br/>
+				<br>
 		
-			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Rural population, female (% of total)</i> - <b>SP.RUR.TOTL.FE.ZS</b><br/>
-																					<i>Rural population, male (% of total</i> - <b>SP.RUR.TOTL.MA.ZS</b><br/>
-																					<i>Urban population, female (% of total)</i> - <b>SP.URB.TOTL.FE.ZS</b><br/>
+			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Rural population, female (% of total)</i> - <b>SP.RUR.TOTL.FE.ZS</b><br>
+																					<i>Rural population, male (% of total</i> - <b>SP.RUR.TOTL.MA.ZS</b><br>
+																					<i>Urban population, female (% of total)</i> - <b>SP.URB.TOTL.FE.ZS</b><br>
 																					<i>Urban population, male (% of total)</i> - <b>SP.URB.TOTL.MA.ZS</b>">
-				Como está distribuída a população dos países?</h5>
-				<b>Gráfico bolinha população rural, homens e mulheres</b><br/>
-				<b>Gráfico bolinha população urbana, homens e mulheres</b><br/><br/>
+				<b>Como está distribuída a população dos países?</b></h5>
 
-				<select class="selectpicker countrypicker" data-flag="true" ></select>
+				<div class="campo">
+					<select class="selectpicker countrypicker" data-flag="true" required></select>
+					<select id="selectElementId" class="selectpicker" required></select>
+					<button id="buttonDistribuicaoPopulacional" onclick="gerarGraficosDistribuicaoPopulacional" type="button" class="btn btn-primary">Gerar!</button>
+				</div>
+
+				<script>
+					var min = 1960,
+						max = 2018,
+						select = document.getElementById('selectElementId');
+
+					for (var i = min; i<=max; i++){
+						var opt = document.createElement('option');
+						opt.value = i;
+						opt.text = i;
+						select.appendChild(opt);
+					}
+				</script>
 				
+				<br><br><br>
 				
-				<br/>		
-				<br/>
-				<br/>
-				<br/>
-				<br/>		
-				<br/>
-				<br/>
-				<br/>
-				<br/>		
-				<br/>
-				<br/>
-				<br/>		
-				<br/>
-				<br/>
-				<br/>
-				<br/>		
-				<br/>
-				<br/>
-				<br/>				
-				<br/>
+				<div class="row">
+					<!-- <div class="col"> -->
+						<b>Gráfico bolinha população rural, homens e mulheres</b><br>
+						<div id="containerChart" style="max-width: 420px; min-width: 360px; margin: 1em auto;></div>
+					<!-- </div> -->
+					<div class="col">
+						<b>Gráfico bolinha população urbana, homens e mulheres</b><br><br>
+					</div>
+				</div>				
+				
+				<br>		
+				<br>
+				<br>
+				<br>
+				<br>		
+				<br>
+				<br>
+				<br>
+				<br>		
+				<br>
+				<br>
+				<br>		
+				<br>
+				<br>
+				<br>
+				<br>		
+				<br>
+				<br>
+				<br>				
+				<br>
 				
 				<div id="parliamentRural" class="parliament"></div>
 				<div id="parliamentUrbana" class="parliament"></div>
@@ -128,151 +160,156 @@
 		<!-- INÍCIO EDUCAÇÃO -->	
 		<div id="educacao" class="container tab-pane fade"><br>
 		  <h3>Educação</h3>
-			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Educational attainment, at least Bachelor's or equivalent, population 25+, female (%) (cumulative)</i><br/>
-																					<i>Educational attainment, at least Bachelor's or equivalent, population 25+, male (%) (cumulative)</i><br/>
-																					<i>Educational attainment, at least completed lower secondary, population 25+, female (%) (cumulative)</i><br/>
-																					<i>Educational attainment, at least completed lower secondary, population 25+, male (%) (cumulative)</i><br/>
-																					<i>Educational attainment, at least completed post-secondary, population 25+, female (%) (cumulative)</i><br/>
-																					<i>Educational attainment, at least completed post-secondary, population 25+, male (%) (cumulative)</i><br/>
-																					<i>Educational attainment, at least completed primary, population 25+ years, female (%) (cumulative)</i><br/>
-																					<i>Educational attainment, at least completed primary, population 25+ years, male (%) (cumulative)</i><br/>
-																					<i>Educational attainment, at least completed short-cycle tertiary, population 25+, female (%) (cumulative)</i><br/>
-																					<i>Educational attainment, at least completed short-cycle tertiary, population 25+, male (%) (cumulative)</i><br/>
-																					<i>Educational attainment, at least completed upper secondary, population 25+, female (%) (cumulative)</i><br/>
-																					<i>Educational attainment, at least completed upper secondary, population 25+, male (%) (cumulative)</i><br/>
-																					<i>Educational attainment, at least Master's or equivalent, population 25+, female (%) (cumulative)</i><br/>
-																					<i>Educational attainment, at least Master's or equivalent, population 25+, male (%) (cumulative)</i><br/>
-																					<i>Educational attainment, Doctoral or equivalent, population 25+, female (%) (cumulative)</i><br/>
-																					<i>Educational attainment, Doctoral or equivalent, population 25+, male (%) (cumulative)</i><br/>
-																					<i>Children out of school, primary, female</i><br/>
-																					<i>Children out of school, primary, male</i><br/>
-																					<i>Literacy rate, adult female (% of females ages 15 and above)</i><br/>
-																					<i>Literacy rate, adult male (% of males ages 15 and above)</i><br/>
-																					<i>Literacy rate, youth female (% of females ages 15-24)</i><br/>
-																					<i>Literacy rate, youth male (% of males ages 15-24)</i><br/>
-																					<i>Youth illiterate population, 15-24 years, % female</i><br/>
-																					<i>Youth illiterate population, 15-24 years, female (number)</i><br/>">			
-				Qual o nível de escolaridade feminino e masculino nos países?</h5><br/>
-				
-
-
+			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Educational attainment, at least Bachelor's or equivalent, population 25+, female (%) (cumulative)</i><br>
+																					<i>Educational attainment, at least Bachelor's or equivalent, population 25+, male (%) (cumulative)</i><br>
+																					<i>Educational attainment, at least completed lower secondary, population 25+, female (%) (cumulative)</i><br>
+																					<i>Educational attainment, at least completed lower secondary, population 25+, male (%) (cumulative)</i><br>
+																					<i>Educational attainment, at least completed post-secondary, population 25+, female (%) (cumulative)</i><br>
+																					<i>Educational attainment, at least completed post-secondary, population 25+, male (%) (cumulative)</i><br>
+																					<i>Educational attainment, at least completed primary, population 25+ years, female (%) (cumulative)</i><br>
+																					<i>Educational attainment, at least completed primary, population 25+ years, male (%) (cumulative)</i><br>
+																					<i>Educational attainment, at least completed short-cycle tertiary, population 25+, female (%) (cumulative)</i><br>
+																					<i>Educational attainment, at least completed short-cycle tertiary, population 25+, male (%) (cumulative)</i><br>
+																					<i>Educational attainment, at least completed upper secondary, population 25+, female (%) (cumulative)</i><br>
+																					<i>Educational attainment, at least completed upper secondary, population 25+, male (%) (cumulative)</i><br>
+																					<i>Educational attainment, at least Master's or equivalent, population 25+, female (%) (cumulative)</i><br>
+																					<i>Educational attainment, at least Master's or equivalent, population 25+, male (%) (cumulative)</i><br>
+																					<i>Educational attainment, Doctoral or equivalent, population 25+, female (%) (cumulative)</i><br>
+																					<i>Educational attainment, Doctoral or equivalent, population 25+, male (%) (cumulative)</i><br>
+																					<i>Children out of school, primary, female</i><br>
+																					<i>Children out of school, primary, male</i><br>
+																					<i>Literacy rate, adult female (% of females ages 15 and above)</i><br>
+																					<i>Literacy rate, adult male (% of males ages 15 and above)</i><br>
+																					<i>Literacy rate, youth female (% of females ages 15-24)</i><br>
+																					<i>Literacy rate, youth male (% of males ages 15-24)</i><br>
+																					<i>Youth illiterate population, 15-24 years, % female</i><br>
+																					<i>Youth illiterate population, 15-24 years, female (number)</i><br>">			
+				<b>Qual o nível de escolaridade feminino e masculino nos países?</b></h5><br>
+				<div class="row">
+					<div class="col">
+						<div id="chartWoman"></div>
+					</div>
+					<div class="col">
+						<div id="chartMan"></div>
+					</div>
+				</div>
 		<!-- FIM EDUCAÇÃO -->		
 		</div>
 		
 		<!-- INÍCIO FINANÇAS -->	
 		<div id="financas" class="container tab-pane fade"><br>
-		  <h3>Finanças</h3>
-			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Account ownership at a financial institution or with a mobile-money-service provider, female (% of population ages 15+)</i><br/>
-																					<i>Account ownership at a financial institution or with a mobile-money-service provider, male (% of population ages 15+)</i><br/>
-																					<i>Financial institution account,female(% age 15+)</i><br/>
-																					<i>Financial institution account,male(% age 15+)</i><br/>
-																					<i>Mobile money account, female (% age 15+)</i><br/>
-																					<i>Mobile money account, male  (% age 15+)</i><br/>
-																					<i>Own-account workers, female (% of female employment) (modeled ILO estimate)</i><br/>
-																					<i>Own-account workers, male (% of male employment) (modeled ILO estimate)</i><br/>
-																					<i>Part time employment, female (% of total part time employment)</i><br/>
-																					<i>Saved any money in the past year, female  (% age 15+)</i><br/>
-																					<i>Saved any money in the past year, male  (% age 15+)</i><br/>">
-				Homens e mulheres possuem o mesmo acesso a instituições financeiras?</h5><br/>	
+		  <h3><b>Finanças</b></h3>
+			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Account ownership at a financial institution or with a mobile-money-service provider, female (% of population ages 15+)</i><br>
+																					<i>Account ownership at a financial institution or with a mobile-money-service provider, male (% of population ages 15+)</i><br>
+																					<i>Financial institution account,female(% age 15+)</i><br>
+																					<i>Financial institution account,male(% age 15+)</i><br>
+																					<i>Mobile money account, female (% age 15+)</i><br>
+																					<i>Mobile money account, male  (% age 15+)</i><br>
+																					<i>Own-account workers, female (% of female employment) (modeled ILO estimate)</i><br>
+																					<i>Own-account workers, male (% of male employment) (modeled ILO estimate)</i><br>
+																					<i>Part time employment, female (% of total part time employment)</i><br>
+																					<i>Saved any money in the past year, female  (% age 15+)</i><br>
+																					<i>Saved any money in the past year, male  (% age 15+)</i><br>">
+				<b>Homens e mulheres possuem o mesmo acesso a instituições financeiras?</b></h5><br>	
 
 		<!-- FIM FINANÇAS -->
 		</div>
 		
 		<!-- INÍCIO SAÚDE -->
 		<div id="saude" class="container tab-pane fade"><br>
-		  <h3>Saúde</h3>
-			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Life expectancy at birth, female (years)</i><br/>
-																					<i>Life expectancy at birth, male (years)</i><br/>
-																					<i>Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, female (%)</i><br/>
-																					<i>Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, male (%)</i><br/>
-																					<i>Mortality rate attributed to household and ambient air pollution, age-standardized, female (per 100,000 female population)</i><br/>
-																					<i>Mortality rate attributed to household and ambient air pollution, age-standardized, male (per 100,000 male population)</i><br/>
-																					<i>Mortality rate attributed to unintentional poisoning, female (per 100,000 female population)</i><br/>
-																					<i>Mortality rate attributed to unintentional poisoning, male (per 100,000 male population)</i><br/>
-																					<i>Mortality rate, infant, female (per 1,000 live births)</i><br/>
-																					<i>Mortality rate, infant, male (per 1,000 live births)</i><br/>
-																					<i>Prevalence of obesity, female (% of female population ages 18+)</i><br/>
-																					<i>Prevalence of obesity, male (% of male population ages 18+)</i><br/>
-																					<i>Prevalence of overweight, female (% of female adults)</i><br/>
-																					<i>Prevalence of overweight, male (% of male adults)</i><br/>
-																					<i>Suicide mortality rate, female (per 100,000 female population)</i><br/>
-																					<i>Suicide mortality rate, male (per 100,000 male population)</i><br/>">
-				Como está, em parâmetros gerais, a saúde da população?</h5><br/>
+		  <h3><b>Saúde</b></h3>
+			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Life expectancy at birth, female (years)</i><br>
+																					<i>Life expectancy at birth, male (years)</i><br>
+																					<i>Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, female (%)</i><br>
+																					<i>Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, male (%)</i><br>
+																					<i>Mortality rate attributed to household and ambient air pollution, age-standardized, female (per 100,000 female population)</i><br>
+																					<i>Mortality rate attributed to household and ambient air pollution, age-standardized, male (per 100,000 male population)</i><br>
+																					<i>Mortality rate attributed to unintentional poisoning, female (per 100,000 female population)</i><br>
+																					<i>Mortality rate attributed to unintentional poisoning, male (per 100,000 male population)</i><br>
+																					<i>Mortality rate, infant, female (per 1,000 live births)</i><br>
+																					<i>Mortality rate, infant, male (per 1,000 live births)</i><br>
+																					<i>Prevalence of obesity, female (% of female population ages 18+)</i><br>
+																					<i>Prevalence of obesity, male (% of male population ages 18+)</i><br>
+																					<i>Prevalence of overweight, female (% of female adults)</i><br>
+																					<i>Prevalence of overweight, male (% of male adults)</i><br>
+																					<i>Suicide mortality rate, female (per 100,000 female population)</i><br>
+																					<i>Suicide mortality rate, male (per 100,000 male population)</i><br>">
+				<b>Como está, em parâmetros gerais, a saúde da população?</b></h5><br>
 				
 		<!-- FIM SAÚDE -->
 		</div>
 		
 		<!-- INÍCIO TRABALHO -->
-		<div id="trabalho" class="container tab-pane fade"><br/>
-		  <h3>Trabalho</h3>
-		  	<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Unemployment with advanced education, female (% of female labor force with advanced education)</i><br/>
-																					<i>Unemployment with advanced education, male (% of male labor force with advanced education)</i><br/>
-																					<i>Unemployment with basic education, female (% of female labor force with basic education)</i><br/>
-																					<i>Unemployment with basic education, male (% of male labor force with basic education)</i><br/>
-																					<i>Unemployment with intermediate education, female (% of female labor force with intermediate education)</i><br/>
-																					<i>Unemployment with intermediate education, male (% of male labor force with intermediate education)</i><br/>
-																					<i>Unemployment, female (% of female labor force) (modeled ILO estimate)</i><br/>
-																					<i>Unemployment, female (% of female labor force) (national estimate)</i><br/>
-																					<i>Unemployment, male (% of male labor force) (modeled ILO estimate)</i><br/>
-																					<i>Unemployment, male (% of male labor force) (national estimate)</i><br/>
-																					<i>Unemployment, youth female (% of female labor force ages 15-24) (modeled ILO estimate)</i><br/>
-																					<i>Unemployment, youth female (% of female labor force ages 15-24) (national estimate)</i><br/>
-																					<i>Unemployment, youth male (% of male labor force ages 15-24) (modeled ILO estimate)</i><br/>
-																					<i>Unemployment, youth male (% of male labor force ages 15-24) (national estimate)</i><br/>">
-				Qual o perfil educacional dos desempregados?</h5><br/>
+		<div id="trabalho" class="container tab-pane fade"><br>
+		  <h3><b>Trabalho</b></h3>
+		  	<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Unemployment with advanced education, female (% of female labor force with advanced education)</i><br>
+																					<i>Unemployment with advanced education, male (% of male labor force with advanced education)</i><br>
+																					<i>Unemployment with basic education, female (% of female labor force with basic education)</i><br>
+																					<i>Unemployment with basic education, male (% of male labor force with basic education)</i><br>
+																					<i>Unemployment with intermediate education, female (% of female labor force with intermediate education)</i><br>
+																					<i>Unemployment with intermediate education, male (% of male labor force with intermediate education)</i><br>
+																					<i>Unemployment, female (% of female labor force) (modeled ILO estimate)</i><br>
+																					<i>Unemployment, female (% of female labor force) (national estimate)</i><br>
+																					<i>Unemployment, male (% of male labor force) (modeled ILO estimate)</i><br>
+																					<i>Unemployment, male (% of male labor force) (national estimate)</i><br>
+																					<i>Unemployment, youth female (% of female labor force ages 15-24) (modeled ILO estimate)</i><br>
+																					<i>Unemployment, youth female (% of female labor force ages 15-24) (national estimate)</i><br>
+																					<i>Unemployment, youth male (% of male labor force ages 15-24) (modeled ILO estimate)</i><br>
+																					<i>Unemployment, youth male (% of male labor force ages 15-24) (national estimate)</i><br>">
+				<b>Qual o perfil educacional dos desempregados?</b></h5><br>
 							
 		
-			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Informal employment, female (% of total non-agricultural employment)</i><br/>
-																					<i>Informal employment, male (% of total non-agricultural employment)</i><br/>
-																					<i>Labor force participation rate for ages 15-24, female (%) (modeled ILO estimate)</i><br/>
-																					<i>Labor force participation rate for ages 15-24, female (%) (national estimate)</i><br/>
-																					<i>Labor force participation rate for ages 15-24, male (%) (modeled ILO estimate)</i><br/>
-																					<i>Labor force participation rate for ages 15-24, male (%) (national estimate)</i><br/>
-																					<i>Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)</i><br/>
-																					<i>Labor force participation rate, female (% of female population ages 15+) (national estimate)</i><br/>
-																					<i>Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)</i><br/>
-																					<i>Labor force participation rate, male (% of male population ages 15+) (modeled ILO estimate)</i><br/>
-																					<i>Labor force participation rate, male (% of male population ages 15+) (national estimate)</i><br/>
-																					<i>Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)</i><br/>
-																					<i>Labor force with advanced education, female (% of female working-age population with advanced education)</i><br/>
-																					<i>Labor force with advanced education, male (% of male working-age population with advanced education)</i><br/>
-																					<i>Labor force with basic education, female (% of female working-age population with basic education)</i><br/>
-																					<i>Labor force with basic education, male (% of male working-age population with basic education)</i><br/>
-																					<i>Labor force with intermediate education, female (% of female working-age population with intermediate education)</i><br/>
-																					<i>Labor force with intermediate education, male (% of male working-age population with intermediate education)</i><br/>
-																					<i>Labor force, female</i><br/>
-																					<i>Labor force, female (% of total labor force)</i><br/>">
-				Qual o perfil educacional dos empregados?</h5><br/>
+			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Informal employment, female (% of total non-agricultural employment)</i><br>
+																					<i>Informal employment, male (% of total non-agricultural employment)</i><br>
+																					<i>Labor force participation rate for ages 15-24, female (%) (modeled ILO estimate)</i><br>
+																					<i>Labor force participation rate for ages 15-24, female (%) (national estimate)</i><br>
+																					<i>Labor force participation rate for ages 15-24, male (%) (modeled ILO estimate)</i><br>
+																					<i>Labor force participation rate for ages 15-24, male (%) (national estimate)</i><br>
+																					<i>Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)</i><br>
+																					<i>Labor force participation rate, female (% of female population ages 15+) (national estimate)</i><br>
+																					<i>Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)</i><br>
+																					<i>Labor force participation rate, male (% of male population ages 15+) (modeled ILO estimate)</i><br>
+																					<i>Labor force participation rate, male (% of male population ages 15+) (national estimate)</i><br>
+																					<i>Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)</i><br>
+																					<i>Labor force with advanced education, female (% of female working-age population with advanced education)</i><br>
+																					<i>Labor force with advanced education, male (% of male working-age population with advanced education)</i><br>
+																					<i>Labor force with basic education, female (% of female working-age population with basic education)</i><br>
+																					<i>Labor force with basic education, male (% of male working-age population with basic education)</i><br>
+																					<i>Labor force with intermediate education, female (% of female working-age population with intermediate education)</i><br>
+																					<i>Labor force with intermediate education, male (% of male working-age population with intermediate education)</i><br>
+																					<i>Labor force, female</i><br>
+																					<i>Labor force, female (% of total labor force)</i><br>">
+				<b>Qual o perfil educacional dos empregados?</b></h5><br>
 		
 		
-			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Female migrants (% of international migrant stock)</i><br/>
-																					<i>Female professional and technical workers (% of total)</i><br/>
-																					<i>Female share of employment in senior and middle management (%)</i><br/>
-																					<i>Female share of graduates from Science, Technology, Engineering and Mathematics (STEM) programmes, tertiary (%)</i><br/>
-																					<i>Firms with female participation in ownership (% of firms)</i><br/>
-																					<i>Firms with female top manager (% of firms)</i><br/>">
-				Qual o perfil profissional feminino?</h5><br/>
+			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Female migrants (% of international migrant stock)</i><br>
+																					<i>Female professional and technical workers (% of total)</i><br>
+																					<i>Female share of employment in senior and middle management (%)</i><br>
+																					<i>Female share of graduates from Science, Technology, Engineering and Mathematics (STEM) programmes, tertiary (%)</i><br>
+																					<i>Firms with female participation in ownership (% of firms)</i><br>
+																					<i>Firms with female top manager (% of firms)</i><br>">
+				<b>Qual o perfil profissional feminino?</b></h5><br>
 						
 		
-			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Employment in agriculture, female (% of female employment) (modeled ILO estimate)</i><br/>
-																					<i>Employment in agriculture, male (% of male employment) (modeled ILO estimate)</i><br/>
-																					<i>Employment in industry, female (% of female employment) (modeled ILO estimate)</i><br/>
-																					<i>Employment in industry, male (% of male employment) (modeled ILO estimate)</i><br/>
-																					<i>Employment in services, female (% of female employment) (modeled ILO estimate)</i><br/>
-																					<i>Employment in services, male (% of male employment) (modeled ILO estimate)</i><br/>">
-				Como homens e mulheres estão divididos nas áreas de trabalho?</h5><br/>
+			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Employment in agriculture, female (% of female employment) (modeled ILO estimate)</i><br>
+																					<i>Employment in agriculture, male (% of male employment) (modeled ILO estimate)</i><br>
+																					<i>Employment in industry, female (% of female employment) (modeled ILO estimate)</i><br>
+																					<i>Employment in industry, male (% of male employment) (modeled ILO estimate)</i><br>
+																					<i>Employment in services, female (% of female employment) (modeled ILO estimate)</i><br>
+																					<i>Employment in services, male (% of male employment) (modeled ILO estimate)</i><br>">
+				<b>Como homens e mulheres estão divididos nas áreas de trabalho?</b></h5><br>
 		
 	
 
 			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no)</i>">
-				[EXTRA]Existe lei que exige a igualdade salarial entre homens e mulheres?</h5><br/>
+				<b>[EXTRA]Existe lei que exige a igualdade salarial entre homens e mulheres?</b></h5><br>
 
 
 		<!-- FIM TRABALHO -->				
 		</div>		
 	  </div>
 	</div>
-
+	 <script src="js/educacao.js"></script>
 	 <script>
 		$('.countrypicker').countrypicker();
 	 </script> 
