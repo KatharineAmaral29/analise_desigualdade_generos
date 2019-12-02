@@ -268,4 +268,13 @@ tspan {
   height: 400px !important;
 }
 
+#chartSave {
+  width: 80% !important;
+  height: 400px !important;
+}
+
+#chartBank {
+  width: 80% !important;
+  height: 400px !important;
+}
 /* Fim bonecao*/
