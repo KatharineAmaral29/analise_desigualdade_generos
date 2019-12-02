@@ -258,4 +258,14 @@ tspan {
   height: 400px !important;
 }
 
+#chartSaudeMan {
+  width: 80% !important;
+  height: 400px !important;
+}
+
+#chartSaudeWoman {
+  width: 80% !important;
+  height: 400px !important;
+}
+
 /* Fim bonecao*/
