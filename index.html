@@ -27,6 +27,7 @@
 	<script src="https://www.amcharts.com/lib/4/core.js"></script>
 	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
 	<script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
+	<script src="https://www.amcharts.com/lib/4/plugins/timeline.js"></script>
 	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 
 </head>
@@ -1920,11 +1921,24 @@
 																					<i>Employment in services, male (% of male employment) (modeled ILO estimate)</i><br>">
 				<b>Como homens e mulheres estão divididos nas áreas de trabalho?</b></h5><br>
 		
-	
+			  	<div style="text-align: center;">
+					<h5><b>Áreas de atuação dos empregados (estimado no modelo ILO)</b></h5>
+				</div>				
+				<div class="row">
+					<div class="col">
+						<div id="chartAreasTrabalhoWoman"></div>
+					</div>
+					<div class="col">
+						<div id="chartAreasTrabalhoMan"></div>
+					</div>
+				</div>
 
 			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no)</i>">
 				<b>[EXTRA]Existe lei que exige a igualdade salarial entre homens e mulheres?</b></h5><br>
-
+				<div style="text-align: center;">
+					<h5><b>Existem leis de igualdade salarial entre homens e mulheres? Onde? Quando?</b></h5>
+				</div>
+				<div id="chartIgualdadeSalarial"></div>
 
 		<!-- FIM TRABALHO -->				
 		</div>		

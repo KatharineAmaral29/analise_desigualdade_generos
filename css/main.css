@@ -288,5 +288,20 @@ tspan {
   height: 400px !important;
 }
 
+#chartAreasTrabalhoMan {
+  width: 80% !important;
+  height: 400px !important;
+}
 
-/* Fim bonecao*/
+#chartAreasTrabalhoWoman {
+  width: 80% !important;
+  height: 400px !important;
+}
+
+/* Fim bonecao */
+
+/* Timeline em peixe */
+#chartIgualdadeSalarial {
+  width: 100%;
+  height: 600px;
+}
