@@ -6,11 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/main.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
-	<!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/3.1.5/dc.min.css" /> -->
     <script src="https://d3js.org/d3.v5.js"></script>
-    <!-- <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script> -->
-    <!-- <script src="https://d3js.org/d3-zoom.v1.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter2/1.4.7/crossfilter.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/3.1.5/dc.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -85,7 +81,7 @@
 				<br>
 		
 			<h5 data-toggle="tooltip" data-html="true" data-container="body" title="<i>Rural population, female (% of total)</i> - <b>SP.RUR.TOTL.FE.ZS</b><br>
-																					<i>Rural population, male (% of total</i> - <b>SP.RUR.TOTL.MA.ZS</b><br>
+																					<i>Rural population, male (% of total)</i> - <b>SP.RUR.TOTL.MA.ZS</b><br>
 																					<i>Urban population, female (% of total)</i> - <b>SP.URB.TOTL.FE.ZS</b><br>
 																					<i>Urban population, male (% of total)</i> - <b>SP.URB.TOTL.MA.ZS</b>">
 				<b>Como está distribuída a população dos países?</b></h5>
@@ -421,43 +417,23 @@
 					</select>
 				</div>
 				<div class="campo">				
-					<button id="buttonDistribuicaoPopulacional" onclick="gerarGraficosDistribuicaoPopulacional()" type="button" class="btn btn-warning">Gerar Distrib. Pop.!</button>
+					<button id="buttonDistribuicaoPopulacional" onclick="gerarGraficosDistribuicaoPopulacional()" type="button" class="btn btn-warning">Gerar Distrib. Pop !</button>
 				</div>
-				
-				<br><br><br>
 				
 				<div class="row">
 					<div class="col">
-						<b>Gráfico bolinha população rural, homens e mulheres</b><br>
+						<div style="text-align: center;">
+							<h5><b>População Rural</b></h5>
+						</div>
+						<div id="chartRural"></div>
 					</div>
 					<div class="col">
-						<b>Gráfico bolinha população urbana, homens e mulheres</b><br><br>
+						<div style="text-align: center;">
+							<h5><b>População Urbana</b></h5>
+						</div>
+						<div id="chartUrbana"></div>
 					</div>
-				</div>				
-				
-				<br>		
-				<br>
-				<br>
-				<br>
-				<br>		
-				<br>
-				<br>
-				<br>
-				<br>		
-				<br>
-				<br>
-				<br>		
-				<br>
-				<br>
-				<br>
-				<br>		
-				<br>
-				<br>
-				<br>				
-				<br>
-				
-				<div id="parliamentRural" class="parliament"></div>
-				<div id="parliamentUrbana" class="parliament"></div>
+				</div>
 		<!-- FIM DISTRIBUIÇÃO POPULACIONAL -->			
 		</div>
 		
