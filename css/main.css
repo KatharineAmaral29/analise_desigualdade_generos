@@ -298,6 +298,16 @@ tspan {
   height: 400px !important;
 }
 
+#chartPerfilDesempregadosWoman {
+  width: 80% !important;
+  height: 400px !important;	
+}
+
+#chartPerfilDesempregadosMan {
+  width: 80% !important;
+  height: 400px !important;	
+}
+
 /* Fim bonecao */
 
 /* Timeline em peixe */
